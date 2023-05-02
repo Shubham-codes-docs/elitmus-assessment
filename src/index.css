@@ -1,0 +1,13 @@
+body {
+  background-color: rgba(10, 10, 10, 0.9);
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+input {
+  color: #fff !important;
+}

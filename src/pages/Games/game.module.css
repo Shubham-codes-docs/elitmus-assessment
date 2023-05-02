@@ -1,0 +1,21 @@
+.hint-image {
+  max-width: 38rem;
+}
+
+.incorrect-card {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+#hidden-hint-image {
+  display: none;
+}
+
+@media (max-width: 350px) {
+  #hidden-hint-image {
+    display: block;
+  }
+}
