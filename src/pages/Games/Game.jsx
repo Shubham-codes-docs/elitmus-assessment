@@ -34,14 +34,17 @@ const Game = () => {
   );
 
   const getData = async () => {
-    const res = await fetch("http://localhost:5000/user/get-question-details", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      },
-      body: JSON.stringify({ questionId: params.id }),
-    });
+    const res = await fetch(
+      "https://giddy-leg-warmers-bull.cyclic.app/user/get-question-details",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+        body: JSON.stringify({ questionId: params.id }),
+      }
+    );
     const data = await res.json();
     console.log(data);
     if (data.success === 1) {
@@ -133,13 +136,16 @@ const Game = () => {
       });
 
       if (incorrectAns >= 5) {
-        const res = await fetch("http://localhost:5000/user/reset-game", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `bearer ${token}`,
-          },
-        });
+        const res = await fetch(
+          "https://giddy-leg-warmers-bull.cyclic.app/user/reset-game",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `bearer ${token}`,
+            },
+          }
+        );
         const data = await res.json();
         if (data.success == 1) {
           Swal.fire({
@@ -173,14 +179,17 @@ const Game = () => {
         incorrectAnswers: incorrectAns,
         status: true,
       };
-      const res = await fetch("http://localhost:5000/user/submit-answer", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `bearer ${token}`,
-        },
-        body: JSON.stringify({ questionDetails: submissionData }),
-      });
+      const res = await fetch(
+        "https://giddy-leg-warmers-bull.cyclic.app/user/submit-answer",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `bearer ${token}`,
+          },
+          body: JSON.stringify({ questionDetails: submissionData }),
+        }
+      );
       const data = await res.json();
 
       if (data.success === 1) {

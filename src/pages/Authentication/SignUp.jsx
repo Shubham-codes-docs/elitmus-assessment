@@ -32,13 +32,16 @@ const Forms = () => {
     } else if (password !== cpassword) {
       setErrorMsg("Passwords do not match!");
     } else {
-      const res = await fetch("http://localhost:5000/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password, name }),
-      });
+      const res = await fetch(
+        "https://giddy-leg-warmers-bull.cyclic.app/auth/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password, name }),
+        }
+      );
       const data = await res.json();
       if (data.success === 1) {
         setLoading(false);

@@ -35,3 +35,13 @@ Each incorrect answer leads to a deduction of -1 mark. If a user answers a singl
 **MERN STACK**
 
 ---
+
+### Steps to set up the project
+
+1. Clone the application from it's github repository.
+2. Run npm install
+3. Run npm run dev and the application should be live.
+4. To login as admin simply login in with the following details.
+   **Email:admin@email.com**
+   **Password:admin**
+   _There is no separate admin login page. Admin login can be done via the common login page._

@@ -9,14 +9,17 @@ export const useUserData = create((set, get) => ({
   setHints: async (hintsUsed, questionId, update, timeTaken) => {
     set({ hintsUsedInLastQuestion: hintsUsed });
     if (update) {
-      const res = await fetch("http://localhost:5000/user/update-hints", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `bearer ${get().token}`,
-        },
-        body: JSON.stringify({ questionId, timeTaken }),
-      });
+      const res = await fetch(
+        "https://giddy-leg-warmers-bull.cyclic.app/user/update-hints",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `bearer ${get().token}`,
+          },
+          body: JSON.stringify({ questionId, timeTaken }),
+        }
+      );
       const data = await res.json();
       if (data.success === 1) {
         localStorage.setItem("hints", hintsUsed + 1);
@@ -27,7 +30,7 @@ export const useUserData = create((set, get) => ({
     set({ incorrectAnswerInLastQuestion: incorrectAns, timeTaken });
     if (update) {
       const res = await fetch(
-        "http://localhost:5000/user/update-incorrect-ans",
+        "https://giddy-leg-warmers-bull.cyclic.app/user/update-incorrect-ans",
         {
           method: "POST",
           headers: {

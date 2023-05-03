@@ -36,13 +36,16 @@ const Login = () => {
         setShowError(false);
       }, 5000);
     } else {
-      const res = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await fetch(
+        "https://giddy-leg-warmers-bull.cyclic.app/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
       const data = await res.json();
       if (data.success === 1) {
         console.log(data);

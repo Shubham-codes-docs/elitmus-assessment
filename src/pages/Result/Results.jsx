@@ -30,13 +30,16 @@ const Results = () => {
   }));
 
   const getData = async () => {
-    const res = await fetch("http://localhost:5000/user/generate-report", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://giddy-leg-warmers-bull.cyclic.app/user/generate-report",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json();
     console.log(data);
     setReport(data.userReport);
@@ -47,13 +50,16 @@ const Results = () => {
   }, []);
 
   const resetHandler = async () => {
-    const res = await fetch("http://localhost:5000/user/reset-game", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://giddy-leg-warmers-bull.cyclic.app/user/reset-game",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json();
     if (data.success == 1) {
       Swal.fire({

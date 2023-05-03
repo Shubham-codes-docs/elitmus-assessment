@@ -16,7 +16,7 @@ const IndividualDetails = () => {
   const getData = async () => {
     setIsLoading(true);
     const res = await fetch(
-      `http://localhost:5000/user/get-individual-details/${params.id}`,
+      `https://giddy-leg-warmers-bull.cyclic.app/user/get-individual-details/${params.id}`,
       {
         method: "GET",
         headers: {

@@ -20,13 +20,16 @@ const Leaderboard = () => {
   }));
 
   const getData = async () => {
-    const res = await fetch("http://localhost:5000/user/generate-leaderboard", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://giddy-leg-warmers-bull.cyclic.app/user/generate-leaderboard",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json();
     console.log(data);
     setReport(data.userReports);
