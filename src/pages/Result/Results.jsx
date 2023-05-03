@@ -6,6 +6,7 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
+  Button,
 } from "@mui/material";
 import {
   Scoreboard,
@@ -14,12 +15,15 @@ import {
   HourglassFull,
   Person,
 } from "@mui/icons-material";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import Heading from "../../components/UI/headings/Headings";
 import Paragraph from "../../components/UI/paragraphs/Index";
 import classes from "./results.module.css";
 
 const Results = () => {
   const [report, setReport] = useState({});
+  const navigate = useNavigate();
 
   const { token } = useUserData((state) => ({
     token: state.token,
@@ -41,6 +45,28 @@ const Results = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const resetHandler = async () => {
+    const res = await fetch("http://localhost:5000/user/reset-game", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    if (data.success == 1) {
+      Swal.fire({
+        title: "Reset Game?",
+        text: `Are you sure you want to reset the game?`,
+        icon: "question",
+        showCloseButton: true,
+        confirmButtonText: "Next",
+      }).then(() => {
+        navigate("/home", { state: { questionId: 1 } });
+      });
+    }
+  };
 
   return (
     <>
@@ -117,6 +143,13 @@ const Results = () => {
             />
           </ListItem>
         </List>
+        <Button
+          variant="contained"
+          onClick={resetHandler}
+          sx={{ marginTop: "10px" }}
+        >
+          Reset
+        </Button>
       </div>
     </>
   );

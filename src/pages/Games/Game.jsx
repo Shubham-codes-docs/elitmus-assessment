@@ -144,7 +144,7 @@ const Game = () => {
         if (data.success == 1) {
           Swal.fire({
             title: "Too many incorrect answers",
-            text: `You have given too many incorrect answers. THhe game will restart now.`,
+            text: `You have given too many incorrect answers. The game will restart now.`,
             icon: "error",
             showCloseButton: true,
             confirmButtonText: "Next",

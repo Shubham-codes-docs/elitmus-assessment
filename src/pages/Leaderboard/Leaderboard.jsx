@@ -48,6 +48,7 @@ const Leaderboard = () => {
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
+              <TableCell align="center">Rank</TableCell>
               <TableCell align="center">Name</TableCell>
               <TableCell align="center">Points</TableCell>
               <TableCell align="center">Time</TableCell>
@@ -55,12 +56,15 @@ const Leaderboard = () => {
           </TableHead>
           <TableBody>
             {report.length > 0 &&
-              report.map((r) => {
+              report.map((r, index) => {
                 return (
                   <TableRow
                     key={r.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
+                    <TableCell component="th" scope="row" align="center">
+                      {index + 1}
+                    </TableCell>
                     <TableCell component="th" scope="row" align="center">
                       {r.name}
                     </TableCell>

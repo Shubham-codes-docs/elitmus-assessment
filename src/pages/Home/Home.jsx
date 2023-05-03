@@ -46,6 +46,7 @@ const Home = () => {
           Every incorrect answer will lead to a deduction of -1 point from the
           designated answer for the question.
         </li>
+        <li>You can reset this game by your will only after completing it</li>
         <li>
           For the best experience this game should be played in laptops or
           desktops.
