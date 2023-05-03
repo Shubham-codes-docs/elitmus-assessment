@@ -45,3 +45,14 @@ Each incorrect answer leads to a deduction of -1 mark. If a user answers a singl
    **Email:admin@email.com**
    **Password:admin**
    _There is no separate admin login page. Admin login can be done via the common login page._
+
+---
+
+### Github links
+
+**Frontend - https://github.com/Shubham-codes-docs/elitmus-assessment**
+**Backend - https://github.com/Shubham-codes-docs/elitmus-assignment-backend**
+
+---
+
+### Live link - https://elitmus-assignment.netlify.app
