@@ -84,7 +84,7 @@ const Game = () => {
     getData();
 
     setQuestion(selectedQuestion[0]);
-  }, [params]);
+  }, []);
 
   useEffect(() => {
     setStartTime(new Date());
@@ -125,17 +125,43 @@ const Game = () => {
 
   const submitHandler = async () => {
     if (answer !== question.answer) {
-      setIncorrectAns((prevState) => prevState + 1);
+      setIncorrectAns((prevState) => {
+        return prevState + 1;
+      });
       setPoints((prevState) => {
         return prevState - 1;
       });
-      const elapsedTime = (new Date().getTime() - startTime.getTime()) / 1000;
-      await setStoredIncorrectAns(incorrectAns, params.id, true, elapsedTime);
-      Swal.fire({
-        title: "Incorrect Answer",
-        text: "Incorrect Answer!Please try again",
-        icon: "error",
-      });
+
+      if (incorrectAns >= 5) {
+        const res = await fetch("http://localhost:5000/user/reset-game", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `bearer ${token}`,
+          },
+        });
+        const data = await res.json();
+        if (data.success == 1) {
+          Swal.fire({
+            title: "Too many incorrect answers",
+            text: `You have given too many incorrect answers. THhe game will restart now.`,
+            icon: "error",
+            showCloseButton: true,
+            confirmButtonText: "Next",
+          }).then(() => {
+            navigate("/home", { state: { questionId: 1 } });
+          });
+        }
+      } else {
+        const elapsedTime = (new Date().getTime() - startTime.getTime()) / 1000;
+
+        Swal.fire({
+          title: "Incorrect Answer",
+          text: "Incorrect Answer!Please try again",
+          icon: "error",
+        });
+        await setStoredIncorrectAns(incorrectAns, params.id, true, elapsedTime);
+      }
     } else {
       const elapsedTime = (new Date().getTime() - startTime.getTime()) / 1000;
 

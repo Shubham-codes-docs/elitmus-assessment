@@ -54,7 +54,7 @@ const Home = () => {
       <Stack>
         <Button sx={{ margin: "auto auto" }} variant="contained">
           {console.log(questionId)}
-          <Link to={!questionId > 6 ? `/game/${questionId}` : `/results`}>
+          <Link to={+questionId < 6 ? `/game/${questionId}` : `/results`}>
             Begin
           </Link>
         </Button>
